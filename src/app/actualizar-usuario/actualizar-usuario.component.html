@@ -1,0 +1,66 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Editar de usuario</h3>
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+        <div class="form-group">
+            <label for="">Nombre: </label>
+            <input type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="usuario.nombre"
+            name="=nombre"
+            required
+            minlength="4"
+            maxlength="10"
+            placeholder="Escriba su nombre: "
+            #nombre="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['required']">Escriba su nombre por favor</div>
+                <div *ngIf="nombre.errors?.['minlength']">El nombre debe contener como minimo 4 carcteres</div>
+                <div *ngIf="nombre.errors?.['maxlength']">El nombre debe contener como maximo 10</div> 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Apellido: </label>
+            <input type="text"
+            class="form-control"
+            id="apellido"
+            [(ngModel)]="usuario.apellido"
+            name="=apellido"
+            required
+            minlength="4"
+            maxlength="10"
+            placeholder="Escriba su apellido "
+            #apellido="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div *ngIf="apellido.errors?.['required']">Escriba su apellido por favor</div>
+                <div *ngIf="apellido.errors?.['minlength']">El apellido debe contener como minimo 4 carcteres</div>
+                <div *ngIf="apellido.errors?.['maxlength']">El apellido debe contener como maximo 10</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Genero: </label>
+            <input type="text"
+            class="form-control"
+            id="genero"
+            [(ngModel)]="usuario.genero"
+            name="=genero"
+            required
+            minlength="5"
+            maxlength="6"
+            placeholder="Escriba su genero "
+            #genero="ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="genero.invalid && (genero.dirty || genero.touched)">
+                <div *ngIf="genero.errors?.['required']">Escriba su genero por favor</div>
+                <div *ngIf="genero.errors?.['minlength']">El genero debe contener como minimo 4 carcteres</div>
+                <div *ngIf="genero.errors?.['maxlength']">El genero debe contener como maximo 10</div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]= "!usuarioForm.form.valid">Guardar</button>
+    </form>
+</div>
